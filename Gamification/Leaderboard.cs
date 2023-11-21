@@ -3,12 +3,8 @@ using Dewey_Decimal_System_Library.Model;
 using Dewey_Decimal_System_Library.Other;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dewey_Decimal_System_Revised.Gamification
@@ -41,13 +37,13 @@ namespace Dewey_Decimal_System_Revised.Gamification
                 JsonFileWorker.CreateJsonFile(JsonFileWorker.IdentifyingAreasFile);
             }
 
-            //// check if the json file exists
-            //if (!JsonFileWorker.FileExists(JsonFileWorker.TreeHighScoreFile))
-            //{
-            //    // create the json file
-            //    JsonFileWorker.CreateCallNumFile();
-            //    JsonFileWorker.CreateJsonFile(JsonFileWorker.TreeHighScoreFile);
-            //}
+            // check if the json file exists
+            if (!JsonFileWorker.FileExists(JsonFileWorker.TreeHighScoreFile))
+            {
+                // create the json file
+                JsonFileWorker.CreateCallNumFile();
+                JsonFileWorker.CreateJsonFile(JsonFileWorker.TreeHighScoreFile);
+            }
 
             Console.WriteLine(Univ.Game1);
             Console.WriteLine(Univ.Game2);
@@ -55,7 +51,7 @@ namespace Dewey_Decimal_System_Revised.Gamification
 
             if (Univ.Game1)
             {
-                //lvlLeaderboard.Items.Clear();
+                lvlLeaderboard.Items.Clear();
 
                 // retrieve data from json file
                 List<HighScoreModel> lstModelHightScore = JsonFileWorker.GetAllScores(JsonFileWorker.ReplacingBooksFile);
@@ -83,17 +79,17 @@ namespace Dewey_Decimal_System_Revised.Gamification
             }
             else if (Univ.Game3)
             {
-                //lvlLeaderboard.Items.Clear();
+                lvlLeaderboard.Items.Clear();
 
-                //// retrieve data from json file
-                //List<HighScoreModel> lstModelHightScore = JsonFileWorker.GetAllScores(JsonFileWorker.TreeHighScoreFile);
+                // retrieve data from json file
+                List<HighScoreModel> lstModelHightScore = JsonFileWorker.GetAllScores(JsonFileWorker.TreeHighScoreFile);
 
-                //// populate list view
-                //lstModelHightScore.OrderByDescending(x => x.Score)
-                //    .ToList()
-                //    .ForEach(x => lvlLeaderboard.Items.Add(new ListViewItem(new string[] { x.Username, x.Score.ToString() })));
+                // populate list view
+                lstModelHightScore.OrderByDescending(x => x.Score)
+                    .ToList()
+                    .ForEach(x => lvlLeaderboard.Items.Add(new ListViewItem(new string[] { x.Username, x.Score.ToString() })));
 
-                //Univ.Game3 = false;
+                Univ.Game3 = false;
             }
         }
         #endregion
@@ -111,4 +107,4 @@ namespace Dewey_Decimal_System_Revised.Gamification
         #endregion 
     }
 }
-    
+

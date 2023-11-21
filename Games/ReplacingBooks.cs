@@ -1,7 +1,7 @@
 ﻿using Dewey_Decimal_System.Forms_Models;
-using Dewey_Decimal_System_Revised.Gamification;
 using Dewey_Decimal_System_Library.Logic;
 using Dewey_Decimal_System_Library.Other;
+using Dewey_Decimal_System_Revised.Gamification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -162,11 +162,6 @@ namespace Dewey_Decimal_System.Games
         #endregion
 
 
-        private void listBoxRand_DragLeave(object sender, EventArgs e)
-        {
-
-        }
-
 
         #region Start Game
         public bool StartGame()
@@ -180,7 +175,7 @@ namespace Dewey_Decimal_System.Games
                 return false;
             }
 
-            
+
         }
         #endregion
 
@@ -333,6 +328,22 @@ namespace Dewey_Decimal_System.Games
         }
         #endregion
 
+        private void listBoxRand_DragLeave(object sender, DragEventArgs e)
+        {
+            // Check if the dragged data is associated with the data format you expect
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                // Retrieve the dragged data
+                string draggedItem = (string)e.Data.GetData(DataFormats.StringFormat);
+
+                // Add your logic for when an item is dragged out
+                Console.WriteLine($"Item {draggedItem} dragged out of the listBoxRand");
+
+                // You can perform additional actions or handle the removed item as needed
+            }
+        }
+
     }
 }
+
 

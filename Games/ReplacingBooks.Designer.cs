@@ -46,6 +46,7 @@ namespace Dewey_Decimal_System.Games
             this.listBoxRand.Name = "listBoxRand";
             this.listBoxRand.Size = new System.Drawing.Size(248, 352);
             this.listBoxRand.TabIndex = 2;
+            this.listBoxRand.DragOver += new System.Windows.Forms.DragEventHandler(this.listBoxRand_DragLeave);
             this.listBoxRand.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBoxRand_MouseDown);
             // 
             // listBoxSorted

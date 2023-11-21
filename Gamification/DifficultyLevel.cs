@@ -2,13 +2,6 @@
 using Dewey_Decimal_System_Library.Other;
 using Dewey_Decimal_System_Revised.Games;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dewey_Decimal_System_Revised.Gamification
@@ -101,11 +94,13 @@ namespace Dewey_Decimal_System_Revised.Gamification
             else if (Univ.Game3)
             {
                 // Game 3
+                FindingCallNumbers finding = new FindingCallNumbers();
+                this.Hide();
+                finding.ShowDialog();
 
-              
+            }
+            #endregion
+
         }
-        #endregion
-
     }
-}
 }

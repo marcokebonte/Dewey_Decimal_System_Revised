@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dewey_Decimal_System.Games;
+﻿using Dewey_Decimal_System.Games;
 using Dewey_Decimal_System_Library.Model;
 using Dewey_Decimal_System_Library.Other;
-using System;
-using System.IO;
-using System.Windows.Forms;
+using Dewey_Decimal_System_Revised.Games;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Dewey_Decimal_System_Revised.Gamification
 {
@@ -25,15 +20,17 @@ namespace Dewey_Decimal_System_Revised.Gamification
         {
             InitializeComponent();
 
-
+            ScoreAndDetails_Load();
             lblUserMessage.Text = info;
+
+
         }
         #endregion
 
 
 
         #region Form Load
-        private void ScoreAndDetails_Load(object sender, EventArgs e)
+        private void ScoreAndDetails_Load()
         {
             RefreshUI();
 
@@ -77,14 +74,19 @@ namespace Dewey_Decimal_System_Revised.Gamification
             }
             else if (Univ.Game2)
             {
-
                 //Game 2
+                IdentifyingAreas identify = new IdentifyingAreas();
+                this.Hide();
+                identify.ShowDialog();
 
             }
             else if (Univ.Game3)
             {
-
                 //Game 3
+                FindingCallNumbers finding = new FindingCallNumbers();
+                this.Hide();
+                finding.ShowDialog();
+
             }
 
         }
@@ -176,7 +178,10 @@ namespace Dewey_Decimal_System_Revised.Gamification
         #endregion
 
 
-        #region Save High Scores Dictionary
+
+
+
+        #region Save High Scores to Text Resource
         private void SaveHighScoresDictionaryToFiles()
         {
             // Loop through the dictionary and save each game's high scores to a separate text file
@@ -185,6 +190,15 @@ namespace Dewey_Decimal_System_Revised.Gamification
                 string gameIdentifier = game.Key;
                 List<HighScoreModel> highScores = game.Value;
 
+                // Skip saving if the high scores collection is empty or gameIdentifier is empty
+                if (highScores == null || highScores.Count == 0 || string.IsNullOrWhiteSpace(gameIdentifier))
+                {
+                    Console.WriteLine("Invalid gameIdentifier. It cannot be empty or whitespace.");
+                    Console.WriteLine("High scores collection is null or empty. Skipping save.");
+
+                    continue;
+                }
+
                 // Serialize the high scores to a text format (e.g., JSON)
                 string serializedData = JsonConvert.SerializeObject(highScores);
 
@@ -192,7 +206,11 @@ namespace Dewey_Decimal_System_Revised.Gamification
                 string filePath = $"{gameIdentifier}HighScores.txt";
 
                 // Ensure that the directory exists before writing the file
-                string directoryPath = Path.GetDirectoryName(filePath);
+                string directoryPath = filePath;
+                Console.WriteLine($"gameIdentifier: {gameIdentifier}");
+                Console.WriteLine($"directoryPath: {directoryPath}");
+                Console.WriteLine($"filePath: {filePath}");
+
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -200,20 +218,26 @@ namespace Dewey_Decimal_System_Revised.Gamification
 
                 // Write data to the file
                 File.WriteAllText(filePath, serializedData);
+
             }
         }
         #endregion
+
 
         #region Load High Scores from Text Resource
         private List<HighScoreModel> LoadHighScores(string gameIdentifier)
         {
             // Check if the game has high scores in the dictionary
-            if (highScoresByGame.ContainsKey(gameIdentifier))
+            if (highScoresByGame.TryGetValue(gameIdentifier, out var scoresInDictionary))
             {
-                return highScoresByGame[gameIdentifier];
+                // Skip loading if the high scores collection is empty
+                if (scoresInDictionary != null && scoresInDictionary.Count > 0)
+                {
+                    return scoresInDictionary;
+                }
             }
 
-            // If not found in the dictionary, attempt to load from a text file
+            // If not found in the dictionary or the collection is empty, attempt to load from a text file
             string filePath = $"{gameIdentifier}HighScores.txt";
 
             if (File.Exists(filePath))
@@ -231,14 +255,11 @@ namespace Dewey_Decimal_System_Revised.Gamification
         }
         #endregion
 
-
         #endregion
 
 
-
-
         #region Form Close Method
-        private void Scores_FormClosed(object sender, FormClosedEventArgs e)
+        private void Scores_FormClosed()
         {
             // navigate back to the homescreen
             this.Hide();
@@ -248,9 +269,19 @@ namespace Dewey_Decimal_System_Revised.Gamification
         }
 
 
+
         #endregion
 
 
+        #region Navigate Home
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Scores_FormClosed();
+
+        }
+
+        #endregion
     }
 
 
@@ -261,5 +292,5 @@ namespace Dewey_Decimal_System_Revised.Gamification
 
 
 
-    
+
 

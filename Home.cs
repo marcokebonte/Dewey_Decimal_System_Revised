@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Dewey_Decimal_System_Library.Other;
 using Dewey_Decimal_System_Revised.Gamification;
-using Dewey_Decimal_System_Library.Other;
+using System;
+using System.Windows.Forms;
 
 namespace Dewey_Decimal_System_Revised
 {
@@ -60,7 +53,7 @@ namespace Dewey_Decimal_System_Revised
         private void btnIdenAreas_Click(object sender, EventArgs e)
         {
             //initialise game mode
-             Univ.Game1 = false;
+            Univ.Game1 = false;
             Univ.Game2 = true;
             Univ.Game3 = false;
 
@@ -87,30 +80,30 @@ namespace Dewey_Decimal_System_Revised
 
 
 
-        //private void btnFindingCallNumbers_Click(object sender, EventArgs e)
-        //{
-        //    // initialise game mode
-        //    Univ.Game1 = false;
-        //    Univ.Game2 = false;
-        //    Univ.Game3 = true;
+        private void btnFindingCallNumbers_Click(object sender, EventArgs e)
+        {
+            // initialise game mode
+            Univ.Game1 = false;
+            Univ.Game2 = false;
+            Univ.Game3 = true;
 
-        //    DifficultyLevel DifficultyL = new DifficultyLevel();
-        //    this.Hide();
-        //    DifficultyL.ShowDialog();
-        //}
+            DifficultyLevel DifficultyL = new DifficultyLevel();
+            this.Hide();
+            DifficultyL.ShowDialog();
+        }
 
-        //private void FindingCallNumbersLeaderboard_Click(object sender, EventArgs e)
-        //{
-        //    // initialise game mode
-        //    Univ.Game1 = false;
-        //    Univ.Game2 = false;
-        //    Univ.Game3 = true;
+        private void FindingCallNumbersLeaderboard_Click(object sender, EventArgs e)
+        {
+            // initialise game mode
+            Univ.Game1 = false;
+            Univ.Game2 = false;
+            Univ.Game3 = true;
 
-        //    // navigation to new form 
-        //    Leaderboard sortingLeaderboard = new Leaderboard();
-        //    this.Hide();
-        //    sortingLeaderboard.ShowDialog();
-        //}
+            // navigation to new form 
+            Leaderboard sortingLeaderboard = new Leaderboard();
+            this.Hide();
+            sortingLeaderboard.ShowDialog();
+        }
     }//End of Class
 
 

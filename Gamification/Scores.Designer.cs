@@ -40,6 +40,7 @@ namespace Dewey_Decimal_System_Revised.Gamification
             this.textBoxTotalScore = new System.Windows.Forms.TextBox();
             this.textBoxBP = new System.Windows.Forms.TextBox();
             this.textBoxYS = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUserMessage
@@ -49,19 +50,20 @@ namespace Dewey_Decimal_System_Revised.Gamification
             this.lblUserMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserMessage.Location = new System.Drawing.Point(81, 34);
             this.lblUserMessage.Name = "lblUserMessage";
-            this.lblUserMessage.Size = new System.Drawing.Size(196, 32);
+            this.lblUserMessage.Size = new System.Drawing.Size(195, 32);
             this.lblUserMessage.TabIndex = 21;
             this.lblUserMessage.Text = "User Message";
             // 
             // btnTryAgn
             // 
             this.btnTryAgn.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnTryAgn.Location = new System.Drawing.Point(338, 433);
+            this.btnTryAgn.Location = new System.Drawing.Point(475, 431);
             this.btnTryAgn.Name = "btnTryAgn";
             this.btnTryAgn.Size = new System.Drawing.Size(170, 50);
             this.btnTryAgn.TabIndex = 20;
             this.btnTryAgn.Text = "Try Again?";
             this.btnTryAgn.UseVisualStyleBackColor = false;
+            this.btnTryAgn.Click += new System.EventHandler(this.btnPlayAgain_Click);
             // 
             // lblUsername
             // 
@@ -116,6 +118,7 @@ namespace Dewey_Decimal_System_Revised.Gamification
             this.btnSaveScore.TabIndex = 15;
             this.btnSaveScore.Text = "Save Score";
             this.btnSaveScore.UseVisualStyleBackColor = false;
+            this.btnSaveScore.Click += new System.EventHandler(this.btnSaveScore_Click);
             // 
             // textBoxUsername
             // 
@@ -145,12 +148,24 @@ namespace Dewey_Decimal_System_Revised.Gamification
             this.textBoxYS.Size = new System.Drawing.Size(185, 26);
             this.textBoxYS.TabIndex = 11;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(185, 431);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(170, 50);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Home";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Scores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Dewey_Decimal_System_Revised.Properties.Resources.Butterfly_lifespan;
             this.ClientSize = new System.Drawing.Size(898, 517);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblUserMessage);
             this.Controls.Add(this.btnTryAgn);
             this.Controls.Add(this.lblUsername);
@@ -182,5 +197,6 @@ namespace Dewey_Decimal_System_Revised.Gamification
         private System.Windows.Forms.TextBox textBoxTotalScore;
         private System.Windows.Forms.TextBox textBoxBP;
         private System.Windows.Forms.TextBox textBoxYS;
+        private System.Windows.Forms.Button button1;
     }
 }

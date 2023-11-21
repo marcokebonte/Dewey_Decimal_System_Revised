@@ -35,6 +35,7 @@ namespace Dewey_Decimal_System_Revised
             this.btnFindingCallNos = new System.Windows.Forms.Button();
             this.btnLeaderReplace = new System.Windows.Forms.Button();
             this.btnLeaderIden = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -83,6 +84,7 @@ namespace Dewey_Decimal_System_Revised
             this.btnFindingCallNos.TabIndex = 4;
             this.btnFindingCallNos.Text = "Finding Call Numbers";
             this.btnFindingCallNos.UseVisualStyleBackColor = false;
+            this.btnFindingCallNos.Click += new System.EventHandler(this.btnFindingCallNumbers_Click);
             // 
             // btnLeaderReplace
             // 
@@ -108,12 +110,25 @@ namespace Dewey_Decimal_System_Revised
             this.btnLeaderIden.UseVisualStyleBackColor = false;
             this.btnLeaderIden.Click += new System.EventHandler(this.btnLeaderIden_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(637, 375);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 47);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Leaderboard";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.FindingCallNumbersLeaderboard_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Dewey_Decimal_System_Revised.Properties.Resources.Butterfly_lifespan;
             this.ClientSize = new System.Drawing.Size(872, 532);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLeaderIden);
             this.Controls.Add(this.btnLeaderReplace);
             this.Controls.Add(this.btnFindingCallNos);
@@ -135,6 +150,7 @@ namespace Dewey_Decimal_System_Revised
         private System.Windows.Forms.Button btnFindingCallNos;
         private System.Windows.Forms.Button btnLeaderReplace;
         private System.Windows.Forms.Button btnLeaderIden;
+        private System.Windows.Forms.Button button1;
     }
 }
 
