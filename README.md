@@ -35,7 +35,7 @@ The Dewey Decimal System is essentially how everything is organized in the libra
 6. Press F5 on your keyboard to run the application.
 
 
-### Task 1 & Task 2
+### Task 1, Task 2 & POE
 
 #### Technical Requirements
 
